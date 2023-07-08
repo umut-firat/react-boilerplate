@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as StoreProvider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
@@ -12,15 +12,20 @@ import "@fontsource/roboto/700.css";
 import { store } from "./store";
 import router from "./router";
 
+import { DialogProvider } from "./providers";
+
 const themeOptions = store.getState().app.themeOptions;
 const theme = createTheme(themeOptions, MuiCoreTRLocale);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root")!;
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <StoreProvider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <RouterProvider router={router} />
+        <DialogProvider>
+          <RouterProvider router={router} />
+        </DialogProvider>
       </ThemeProvider>
     </StoreProvider>
   </React.StrictMode>
