@@ -4,7 +4,7 @@ import * as uuid from "uuid";
 import { DialogProps } from "../components/Dialog";
 import { DialogContext } from "../contexts";
 
-export const useDialog = () => {
+const useDialog = () => {
   const { openDialog, closeDialog, addDialog, removeDialog } =
     useContext(DialogContext);
 
@@ -23,5 +23,10 @@ export const useDialog = () => {
     removeDialog?.(id);
   }, [id, closeDialog, removeDialog]);
 
-  return [handleDialogOpen, handleDialogClose];
+  return {
+    openDialog: handleDialogOpen,
+    closeDialog: handleDialogClose,
+  };
 };
+
+export default useDialog;

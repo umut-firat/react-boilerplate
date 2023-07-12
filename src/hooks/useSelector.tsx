@@ -5,4 +5,6 @@ import {
 
 import type { StoreState } from "../store";
 
-export const useSelector: TypedUseSelectorHook<StoreState> = useStoreSelector;
+const useSelector: TypedUseSelectorHook<StoreState> = useStoreSelector;
+
+export default useSelector;
