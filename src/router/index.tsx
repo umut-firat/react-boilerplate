@@ -1,8 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 
 import Layout from "../layout";
 import Home from "../pages/Home";
-import Test from "../pages/Test";
+import DialogTest from "../pages/DialogTest";
+import FormTest from "../pages/FormTest";
 
 const router = createBrowserRouter([
   {
@@ -13,8 +14,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "test",
-        element: <Test />,
+        path: "dialog-test",
+        element: <DialogTest />,
+      },
+      {
+        path: "form-test",
+        element: <FormTest />,
+      },
+      {
+        path: "*",
+        element: <Navigate to="/" />,
       },
     ],
   },

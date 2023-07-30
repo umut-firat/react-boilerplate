@@ -31,7 +31,11 @@ const Test = () => {
           >
             Cancel
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => console.log("Submit")}
+          >
             Confirm
           </Button>
         </Box>

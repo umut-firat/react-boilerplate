@@ -17,8 +17,9 @@ import { DialogProvider } from "./providers";
 const themeOptions = store.getState().app.themeOptions;
 const theme = createTheme(themeOptions, muiCoreTRLocale);
 
-const root = document.getElementById("root")!;
-ReactDOM.createRoot(root).render(
+const rootElement = document.getElementById("root")!;
+const root = ReactDOM.createRoot(rootElement);
+root.render(
   <React.StrictMode>
     <StoreProvider store={store}>
       <ThemeProvider theme={theme}>

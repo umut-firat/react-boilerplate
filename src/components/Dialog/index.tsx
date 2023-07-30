@@ -42,24 +42,22 @@ const Dialog: React.FC<{ dialog: DialogProps }> = ({
   dialog: DialogProps;
 }) => (
   <MuiDialog
-    aria-labelledby="draggable-dialog-title"
     open={dialog.open}
     onClose={dialog.onClose}
     PaperComponent={DraggablePaperComponent}
     {...dialog.props}
   >
-    <MuiDialogTitle
-      style={{ cursor: "move" }}
-      id="draggable-dialog-title"
-      sx={{
-        borderBottom: "1px solid rgba(0, 0, 0, 0.25)",
-      }}
-      {...dialog.titleProps}
-    >
-      {dialog.title}
-      {dialog.onClose ? (
+    {dialog.title && (
+      <MuiDialogTitle
+        style={{ cursor: "move" }}
+        id="draggable-dialog-title"
+        sx={{
+          borderBottom: "1px solid rgba(0, 0, 0, 0.25)",
+        }}
+        {...dialog.titleProps}
+      >
+        {dialog.title}
         <IconButton
-          aria-label="close"
           onClick={dialog.onClose}
           sx={{
             position: "absolute",
@@ -70,19 +68,23 @@ const Dialog: React.FC<{ dialog: DialogProps }> = ({
         >
           <CloseIcon />
         </IconButton>
-      ) : null}
-    </MuiDialogTitle>
-    <MuiDialogContent
-      sx={{
-        padding: "20px 24px !important",
-      }}
-      {...dialog.contentProps}
-    >
-      {dialog.content}
-    </MuiDialogContent>
-    <MuiDialogActions {...dialog.actionsProps}>
-      {dialog.actions}
-    </MuiDialogActions>
+      </MuiDialogTitle>
+    )}
+    {dialog.content && (
+      <MuiDialogContent
+        sx={{
+          padding: "20px 24px !important",
+        }}
+        {...dialog.contentProps}
+      >
+        {dialog.content}
+      </MuiDialogContent>
+    )}
+    {dialog.actions && (
+      <MuiDialogActions {...dialog.actionsProps}>
+        {dialog.actions}
+      </MuiDialogActions>
+    )}
   </MuiDialog>
 );
 
